@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+@mixin round-border {
+  border-radius: 10px;
+}
+body {
+  background-color: #f0f2f5;
+}
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #drum-machine {
+    width: 650px;
+    @include round-border;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.2), -5px 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-flow: row wrap;
+    padding: 2%;
+    align-items: center;
+    background-color: white;
+    #drum-container {
+      width: 60%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      .drum-pad {
+        @include round-border;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+        width: 30%;
+        margin: 2% 0;
+        button {
+          @include round-border;
+          width: 100%;
+          border: none;
+          font-size: 1.5rem;
+          padding: 25% 0;
+          background-color: rgb(235, 241, 253);
+          color: #0d366d;
+          outline: none;
+        }
+        button:hover {
+          background-color: rgb(187, 214, 230);
+          cursor: pointer;
+        }
+        @keyframes trigger {
+          from {background-color: rgb(235, 241, 253)}
+          to {background-color: #1874ec}
+        }
+      }
+    }
+    #display {
+      color: #1874ec;
+      width: 40%;
+      text-align: center;
+      h3 {
+        background-color: rgb(235, 241, 253);
+        width: 80%;
+        padding: 5% 0;
+        @include round-border;
+        margin: auto;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    #drum-machine {
+      width: 450px;
+      justify-content: center;
+      #drum-contaier {
+        width: 100%;
+      }
+      #display {
+        margin-top: 2vh;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .App {
+    display: block;
+  }
+}
